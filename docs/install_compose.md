@@ -57,16 +57,22 @@ Anchore Enterprise Feeds require access to the upstream data feeds from the foll
 - data.anchore-enterprise.com (Snyk data)
 
 
-**Air-gapped installs will differ**
+**Air-gapped installs will differ.**
 
 ### Database requirements
 
 Anchore Enterprise uses PostgreSQL object-relation database to store data. Before beginning install, determine whether you will be using the PostgreSQL database container that is automatically install or an external PostgreSQL instance. 
 
-**See configuring external DB instance for more info**
+**See configuring external DB instance for more info.**
 
 ### PostgreSQL versions
 
 The PostgreSQL container that is automatically installed with Anchore Enterprise is postgres:9. 
 
 Anchore Enterprise supports PostgeSQL version 9 or higher
+
+### Installation
+
+- Approved Dockerhub username is required to pull Anchore Enterprise images.
+- A valid Anchore Enterprise license.yaml file.
+
