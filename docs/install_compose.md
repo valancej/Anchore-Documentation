@@ -71,19 +71,19 @@ The PostgreSQL container that is automatically installed with Anchore Enterprise
 
 Anchore Enterprise supports PostgeSQL version 9 or higher
 
-### Installation
+## Installation
 
 - Approved Dockerhub username is required to pull Anchore Enterprise images.
 - A valid Anchore Enterprise license.yaml file.
 - docker-compose.yaml file (will detail how to obtain in steps below)
 
-#### Step 1: Create installation location
+### Step 1: Create installation location
 
 Create a directory to store the configuration files and license file.
 
 `mkdir ~/aevolume`
 
-#### Step 2: Copy configuration files
+### Step 2: Copy configuration files
 
 Download the latest Anchore Enterprise container image which contains the necessary docker-compose and configuration files needed. In order to download the image, you'll need to login to docker using the dockerhub account that you provided to Anchore when you requested your license.
 
@@ -126,7 +126,7 @@ find .
 ./license.yaml
 ```
 
-#### Step 3: Download and run the containers
+### Step 3: Download and run the containers
 
 **Note:** By default, all services (including a bundled DB instance) will be transient, and data will be lost if you shut down/restart.
 
@@ -138,7 +138,7 @@ docker-compose pull
 docker-compose up -d
 ```
 
-#### Step 4: Verify services are up
+### Step 4: Verify services are up
 
 *After a bit of time, run the following command to verify the containers are running:*
 
@@ -225,3 +225,7 @@ vulnerabilities        ubuntu:17.04           2019-01-10T18:23:47.248567        
 vulnerabilities        ubuntu:17.10           2019-01-10T18:23:45.901606        7632               
 vulnerabilities        ubuntu:18.04           2019-01-10T18:23:44.117638        6991
 ```
+
+Anchore Enteprise should now be fully installed and you can begin to analyze images.
+
+##
