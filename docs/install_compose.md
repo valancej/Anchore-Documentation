@@ -228,4 +228,6 @@ vulnerabilities        ubuntu:18.04           2019-01-10T18:23:44.117638        
 
 Anchore Enteprise should now be fully installed and you can begin to analyze images.
 
-##
+## Installing Anchore-CLI
+
+## Configuring an external PostgreSQL instance
