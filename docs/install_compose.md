@@ -86,7 +86,7 @@ Create a directory to store the configuration files and license file.
 
 Download the latest Anchore Enterprise container image which contains the necessary docker-compose and configuration files needed. In order to download the image, you'll need to login to docker using the dockerhub account that you provided to Anchore when you requested your license.
 
-Run the following commands to do so: 
+*Run the following commands to do so:* 
 
 `docker login`
 
@@ -94,7 +94,10 @@ Enter username and password.
 
 `docker pull docker.io/anchore/enterprise:latest`
 
-Next, copy the included docker-compose.yaml file into the directory you created in step 1 by running the following commands.
+Next, copy the included docker-compose.yaml file into the directory you created in step 1.
+
+*Via the following commands:*
+
 ```
 docker create --name ae docker.io/anchore/enterprise:latest
 
@@ -103,13 +106,15 @@ docker cp ae:/docker-compose.yaml ~/aevolume/docker-compose.yaml
 docker rm ae
 ```
 
-Next, copy the license.yaml file that provided into the directory you created in step 1 by running the following command.
+Next, copy the license.yaml file that provided into the directory you created in step 1.
+
+*Via the following command:*
 
 `cp /path/to/your/license.yaml ~/aevolume/license.yaml`
 
 Once these steps are completed, your Anchore directory workspace should look like the following.
 
-Check by running the following commands: 
+*Check by running the following commands:*
 
 `cd ~/aevolume`
 
