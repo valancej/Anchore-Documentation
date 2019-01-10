@@ -45,17 +45,18 @@ Anchore Enterprise Feeds exposes a RESTful API by default on port 8228, however 
 
 Anchore Enterprise Feeds require access to the upstream data feeds from the following supported distributions and package registries over port 443:
 
-- linux.oracle.com (Oracle Linux Security Feed)
-- github.com (Alpine Linux Security database)
-- redhat.com (Red Hat Enterprise Linux security feed)
-- security-tracker.debian.org (Debian security feed)
-- salsa.debian.org (Debian security feed)
-- replicate.npmjs.com (NPM Registry package data)
-- s3-us-west-2.amazonaws.com (Ruby Gems data feed (stored in Amazon S3)
-- static.nvd.nist.gov (NVD Database)
-- launchpad.net/ubuntu-cve-tracker (Ubuntu data)
-- data.anchore-enterprise.com (Snyk data)
-
+| Host | Port | Description |
+| ---- | ---- | ----------- |
+| linux.oracle.com | 443 | Oracle Linux Security Feed |
+| github.com | 443 | Alpine Linux Security Database |
+| redhat.com | 443 | Red Hat Enterprise Linux Security Database |
+| security-tracker.debain.org | 443 | Debian Security Feed |
+| salsa.debian.org | 443 | Debian Security Feed |
+| replicate.npmjs.com | 443 | NPM Registry Package Data |
+| s3-us-west-2.amazonaws.com | 443 | Ruby Gems Data Feed |
+| static.nvd.nist.gov | 443 | NVD Database |
+| launchpad.net/ubuntu-cve-tracker | 443 | Ubuntu Data |
+| data.anchore-enterprise.com | 443 | Snyk data |
 
 **Note:** Air-gapped installs will differ.
 
