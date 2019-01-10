@@ -129,7 +129,7 @@ find .
 
 *By default, all services (including a bundled DB instance) will be transient, and data will be lost if you shut down/restart.*
 
-Run the following commands within the directory created in step 1 to pull and run the containers:
+*Run the following commands within the directory created in step 1 to pull and run the containers:*
 
 ```
 docker-compose pull
@@ -139,7 +139,7 @@ docker-compose up -d
 
 #### Step 4: Verify services are up
 
-After a bit of time, run the following command to verify the containers are running:
+*After a bit of time, run the following command to verify the containers are running:*
 
 `docker-compose ps`
 
@@ -160,7 +160,7 @@ aevolume_enterprise-ui-redis_1_50e706cb20aa          docker-entrypoint.sh redis 
 aevolume_enterprise-ui_1_dafff06270b2                /bin/sh -c node /home/node ...   Up             0.0.0.0:3000->3000/tcp
 ```
 
-In order to check on the status of the Anchore services, run the following command: 
+*In order to check on the status of the Anchore services, run the following command:*
 
 `docker-compose exec engine-api anchore-cli system status`
 
@@ -181,7 +181,7 @@ Engine Code Version: 0.3.1
 
 Important to note that upon initial install of Anchore Enterprise, it will take some time for vulnerability data to be synced into Anchore. For the most optimal experience, wait until all vulnerability data feeds have synced before performing any image analysis operations. 
 
-You can check on the status of the data feeds by running the following command:
+*You can check on the status of the data feeds by running the following command:*
 
 `docker-compose exec engine-api anchore-cli system feeds list`
 
