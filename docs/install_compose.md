@@ -46,7 +46,7 @@ Anchore Enterprise Feeds exposes a RESTful API by default on port 8228, however 
 Anchore Enterprise Feeds require access to the upstream data feeds from the following supported distributions and package registries over port 443:
 
 | Host | Port | Description |
-| ---- | ---- | ----------- |
+| :---- | :---- | :----------- |
 | linux.oracle.com | 443 | Oracle Linux Security Feed |
 | github.com | 443 | Alpine Linux Security Database |
 | redhat.com | 443 | Red Hat Enterprise Linux Security Database |
