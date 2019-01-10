@@ -125,5 +125,21 @@ find .
 ./license.yaml
 ```
 
+#### Download and run the containers
+
+*By default, all services (including a bundled DB instance) will be transient, and data will be lost if you shut down/restart.*
+
+Run the following commands within the directory created in step 1 to pull and run the containers:
+
+```
+docker-compose pull
+
+docker-compose up -d
+```
+
+#### Verify services are up
+
+
+
 
 
