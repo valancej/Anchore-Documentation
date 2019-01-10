@@ -94,8 +94,8 @@ Enter username and password.
 
 Next, copy the included docker-compose.yaml file into the directory you created in step 1.
 
-`docker create --name ae docker.io/anchore/enterprise:latest`
-`docker cp ae:/docker-compose.yaml ~/aevolume/docker-compose.yaml`
+`docker create --name ae docker.io/anchore/enterprise:latest`\n
+`docker cp ae:/docker-compose.yaml ~/aevolume/docker-compose.yaml`\n
 `docker rm ae`
 
 Next, copy the license.yaml file that provided into the directory you created in step 1.
