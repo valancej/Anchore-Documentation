@@ -1,1 +1,3 @@
-# Anchore-Documentation
+# Anchore Documentation
+
+General documentation for installation of Anchore
