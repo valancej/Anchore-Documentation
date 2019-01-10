@@ -16,7 +16,7 @@ The following details the minimum hardware requirements needed to run a single i
 - 8 GB RAM
 - 50 GB disk space
 
-**Increased CPUs and RAM is recommend for better performance**
+**Increased CPUs and RAM is recommended for better performance**
 
 ### Docker requirements
 
@@ -139,7 +139,88 @@ docker-compose up -d
 
 #### Step 4: Verify services are up
 
+After a bit of time, run the following command to verify the containers are running:
 
+`docker-compose ps`
 
+The output should look like the example below: 
 
+```
+aevolume_anchore-db_1_732e4d561243                   docker-entrypoint.sh postgres    Up             5432/tcp              
+aevolume_engine-analyzer_1_d10cdb8b34f1              /docker-entrypoint.sh anch ...   Up (healthy)   8228/tcp              
+aevolume_engine-api_1_89fd746624f3                   /docker-entrypoint.sh anch ...   Up (healthy)   0.0.0.0:8228->8228/tcp
+aevolume_engine-catalog_1_680e4226efad               /docker-entrypoint.sh anch ...   Up (healthy)   8228/tcp              
+aevolume_engine-policy-engine_1_79ef08176b38         /docker-entrypoint.sh anch ...   Up (healthy)   8228/tcp              
+aevolume_engine-simpleq_1_42c62abcaf9d               /docker-entrypoint.sh anch ...   Up (healthy)   8228/tcp              
+aevolume_enterprise-feeds-db_1_244f869bdc97          docker-entrypoint.sh postgres    Up             5432/tcp              
+aevolume_enterprise-feeds_1_1810c017b6d7             /docker-entrypoint.sh anch ...   Up (healthy)   0.0.0.0:8448->8228/tcp
+aevolume_enterprise-rbac-authorizer_1_8b1d8c63ad8c   /docker-entrypoint.sh anch ...   Up (healthy)   8089/tcp, 8228/tcp    
+aevolume_enterprise-rbac-manager_1_3f7aa316211c      /docker-entrypoint.sh anch ...   Up (healthy)   0.0.0.0:8229->8228/tcp
+aevolume_enterprise-ui-redis_1_50e706cb20aa          docker-entrypoint.sh redis ...   Up             6379/tcp              
+aevolume_enterprise-ui_1_dafff06270b2                /bin/sh -c node /home/node ...   Up             0.0.0.0:3000->3000/tcp
+```
 
+In order to check on the status of the Anchore services, run the following command: 
+
+`docker-compose exec engine-api anchore-cli system status`
+
+The ouput should look like the example below:
+
+```
+Service policy_engine (anchore-quickstart, http://engine-policy-engine:8228): up
+Service catalog (anchore-quickstart, http://engine-catalog:8228): up
+Service analyzer (anchore-quickstart, http://engine-analyzer:8228): up
+Service rbac_authorizer (anchore-quickstart, http://enterprise-rbac-authorizer:8228): up
+Service simplequeue (anchore-quickstart, http://engine-simpleq:8228): up
+Service apiext (anchore-quickstart, http://engine-api:8228): up
+Service rbac_manager (anchore-quickstart, http://enterprise-rbac-manager:8228): up
+
+Engine DB Version: 0.0.8
+Engine Code Version: 0.3.1
+```
+
+Important to note that upon initial install of Anchore Enterprise, it will take some time for vulnerability data to be synced into Anchore. For the most optimal experience, wait until all vulnerability data feeds have synced before performing any image analysis operations. 
+
+You can check on the status of the data feeds by running the following command:
+
+`docker-compose exec engine-api anchore-cli system feeds list`
+
+The ouput should look like the example below:
+
+```
+Feed                   Group                  LastSync                          RecordCount        
+snyk                   snyk:java              2019-01-10T18:23:48.169335        1764               
+snyk                   snyk:js                2019-01-10T18:23:48.221875        1251               
+snyk                   snyk:python            2019-01-10T18:23:48.256525        806                
+snyk                   snyk:ruby              2019-01-10T18:23:48.240023        527                
+vulnerabilities        alpine:3.3             2019-01-10T18:23:47.646567        457                
+vulnerabilities        alpine:3.4             2019-01-10T18:23:47.311669        681                
+vulnerabilities        alpine:3.5             2019-01-10T18:23:44.229436        875                
+vulnerabilities        alpine:3.6             2019-01-10T18:23:47.285151        918                
+vulnerabilities        alpine:3.7             2019-01-10T18:23:47.496200        919                
+vulnerabilities        alpine:3.8             2019-01-10T18:23:47.372342        996                
+vulnerabilities        amzn:2                 2019-01-10T18:23:45.982926        121                
+vulnerabilities        centos:5               2019-01-10T18:23:47.442663        1323               
+vulnerabilities        centos:6               2019-01-10T18:23:44.295297        1312               
+vulnerabilities        centos:7               2019-01-10T18:23:43.178719        738                
+vulnerabilities        debian:10              2019-01-10T18:23:47.151327        19156              
+vulnerabilities        debian:7               2019-01-10T18:23:47.411609        20455              
+vulnerabilities        debian:8               2019-01-10T18:23:48.033485        20847              
+vulnerabilities        debian:9               2019-01-10T18:23:45.035600        19550              
+vulnerabilities        debian:unstable        2019-01-10T18:23:45.814821        19971              
+vulnerabilities        ol:5                   2019-01-10T18:23:45.255953        1227               
+vulnerabilities        ol:6                   2019-01-10T18:23:47.395976        1372               
+vulnerabilities        ol:7                   2019-01-10T18:23:44.197697        826                
+vulnerabilities        ubuntu:12.04           2019-01-10T18:23:48.067604        14946              
+vulnerabilities        ubuntu:12.10           2019-01-10T18:23:48.117023        5652               
+vulnerabilities        ubuntu:13.04           2019-01-10T18:23:45.213661        4127               
+vulnerabilities        ubuntu:14.04           2019-01-10T18:23:47.207201        15774              
+vulnerabilities        ubuntu:14.10           2019-01-10T18:23:47.518278        4456               
+vulnerabilities        ubuntu:15.04           2019-01-10T18:23:47.338468        5676               
+vulnerabilities        ubuntu:15.10           2019-01-10T18:23:45.958228        6511               
+vulnerabilities        ubuntu:16.04           2019-01-10T18:23:47.550738        12751              
+vulnerabilities        ubuntu:16.10           2019-01-10T18:23:48.094067        8647               
+vulnerabilities        ubuntu:17.04           2019-01-10T18:23:47.248567        9157               
+vulnerabilities        ubuntu:17.10           2019-01-10T18:23:45.901606        7632               
+vulnerabilities        ubuntu:18.04           2019-01-10T18:23:44.117638        6991
+```
