@@ -183,6 +183,24 @@ Engine Code Version: 0.3.1
 
 Important to note that upon initial install of Anchore Enterprise, it will take some time for vulnerability data to be synced into Anchore. For the most optimal experience, wait until all vulnerability data feeds have synced before performing any image analysis operations. 
 
+*Run the following command to wait for until Anchore is available and ready*
+
+`anchore-cli system wait`
+
+You should see output like the example below when Anchore is ready:
+
+```
+Starting checks to wait for anchore-engine to be available timeout=-1.0 interval=5.0
+API availability: Checking anchore-engine URL (http://0.0.0.0:8228/v1)...
+API availability: Success.
+Service availability: Checking for service set (catalog,simplequeue,analyzer,policy_engine,apiext)...
+Service availability: Success.
+Feed sync: Checking sync completion for feed set (vulnerabilities)...
+Feed sync: Success.
+```
+
+### Check Enterprise Data Feeds
+
 *You can check on the status of the data feeds by running the following command:*
 
 `docker-compose exec engine-api anchore-cli system feeds list`
