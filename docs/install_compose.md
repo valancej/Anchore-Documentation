@@ -199,7 +199,7 @@ Feed sync: Checking sync completion for feed set (vulnerabilities)...
 Feed sync: Success.
 ```
 
-### Check Enterprise Data Feeds
+### Checking the status of the Enterprise Data Feeds
 
 *You can check on the status of the data feeds by running the following command:*
 
