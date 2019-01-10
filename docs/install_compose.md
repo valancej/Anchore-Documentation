@@ -249,4 +249,19 @@ At this point, Anchore Enteprise should now be fully installed and you can begin
 
 ## Installing Anchore-CLI
 
+The Anchore CLI provides a command line interface on top of the Anchore Engine REST API.
+
+Anchore CLI github repo: https://github.com/anchore/anchore-cli
+
+### Install Anchore CLI from source
+
+The Anchore CLI can be installed from source using the Python pip utility.
+
+```
+git clone https://github.com/anchore/anchore-cli
+cd anchore-cli
+pip install --user --upgrade .
+```
+
+
 ## Configuring an external PostgreSQL instance
