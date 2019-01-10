@@ -16,7 +16,7 @@ The following details the minimum hardware requirements needed to run a single i
 - 8 GB RAM
 - 50 GB disk space
 
-**Increased CPUs and RAM is recommended for better performance**
+**Note:** Increased CPUs and RAM is recommended for better performance.
 
 ### Docker requirements
 
@@ -57,13 +57,13 @@ Anchore Enterprise Feeds require access to the upstream data feeds from the foll
 - data.anchore-enterprise.com (Snyk data)
 
 
-**Air-gapped installs will differ.**
+**Note:** Air-gapped installs will differ.
 
 ### Database requirements
 
 Anchore Enterprise uses PostgreSQL object-relation database to store data. Before beginning install, determine whether you will be using the PostgreSQL database container that is automatically install or an external PostgreSQL instance. 
 
-**See configuring external DB instance for more info.**
+**Note:** See configuring external DB instance for more info.
 
 ### PostgreSQL versions
 
@@ -75,6 +75,7 @@ Anchore Enterprise supports PostgeSQL version 9 or higher
 
 - Approved Dockerhub username is required to pull Anchore Enterprise images.
 - A valid Anchore Enterprise license.yaml file.
+- docker-compose.yaml file (will detail how to obtain in steps below)
 
 #### Step 1: Create installation location
 
