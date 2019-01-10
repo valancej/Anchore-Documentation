@@ -76,3 +76,42 @@ Anchore Enterprise supports PostgeSQL version 9 or higher
 - Approved Dockerhub username is required to pull Anchore Enterprise images.
 - A valid Anchore Enterprise license.yaml file.
 
+#### Step 1: Create installation location
+
+Create a directory to store the configuration files and license file.
+
+`mkdir ~/aevolume`
+
+#### Step 2: Copy configuration files
+
+Download the latest Anchore Enterprise container image which contains the necessary docker-compose and configuration files needed. In order to download the image, you'll need to login to docker using the dockerhub account that you provided to Anchore when you requested your license.
+
+`docker login`
+
+Enter username and password.
+
+`docker pull docker.io/anchore/enterprise:latest`
+
+Next, copy the included docker-compose.yaml file into the directory you created in step 1.
+
+`docker create --name ae docker.io/anchore/enterprise:latest`
+`docker cp ae:/docker-compose.yaml ~/aevolume/docker-compose.yaml`
+`docker rm ae`
+
+Next, copy the license.yaml file that provided into the directory you created in step 1.
+
+`cp /path/to/your/license.yaml ~/aevolume/license.yaml`
+
+Once these steps are completed, your Anchore directory workspace should look like the following:
+
+`cd ~/aevolume`
+
+```
+find .
+.
+./docker-compose.yaml
+./license.yaml
+```
+
+
+
