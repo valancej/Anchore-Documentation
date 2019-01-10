@@ -62,7 +62,7 @@ Anchore Enterprise Feeds require access to the upstream data feeds from the foll
 
 ### Database requirements
 
-Anchore Enterprise uses PostgreSQL object-relation database to store data. Before beginning install, determine whether you will be using the PostgreSQL database container that is automatically install or an external PostgreSQL instance. 
+Anchore Enterprise uses PostgreSQL object-relational database to store data. Before beginning install, determine whether you will be using the PostgreSQL database container that is automatically install or an external PostgreSQL instance. 
 
 **Note:** See configuring external DB instance for more info.
 
