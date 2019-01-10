@@ -125,7 +125,7 @@ find .
 ./license.yaml
 ```
 
-#### Download and run the containers
+#### Step 4: Download and run the containers
 
 *By default, all services (including a bundled DB instance) will be transient, and data will be lost if you shut down/restart.*
 
