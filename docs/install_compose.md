@@ -300,6 +300,8 @@ If you are configuring an external database service (e.g. Amazon RDS), updated t
 
 Here is the database section of the config.yaml file with environment variables being passed in: 
 
+*Database section of config.yaml file*
+
 ```
 credentials:
   database:
@@ -312,6 +314,8 @@ credentials:
 ```
 
 Within the docker-compose.yaml file you can specify the database environment variables to be passed into the config.yaml file like so: 
+
+*API service section of docker-compose.yaml file*
 
 ```
 services:
