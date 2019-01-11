@@ -70,7 +70,7 @@ Anchore Enterprise uses PostgreSQL object-relational database to store data. Bef
 
 The PostgreSQL container that is automatically installed with Anchore Enterprise is postgres:9. 
 
-Anchore Enterprise supports PostgeSQL version 9 or higher
+Anchore Enterprise supports PostgeSQL version 9.6 or higher
 
 ## Installation
 
@@ -291,3 +291,54 @@ Now that both Anchore Enterprise and the Anchore CLI have been install and confi
 
 
 ## Configuring an external PostgreSQL instance
+
+As stated in the database requirements above, Anchore requires access to a PostgreSQL database. The database can be run as a container out of the box with a persisted volume or outside of your container environment. If you choose to use an external PostgreSQL Database, the connection string should be specified in the config.yaml file. 
+
+**Note:** The default configuration points to the host anchore-db on port 5432 using username postgres and password mysecretpassword.
+
+If you are configuring an external database service (e.g. Amazon RDS), updated the host, port, username, password, and database name.
+
+Here is the database section of the config.yaml file with environment variables being passed in: 
+
+```
+credentials:
+  database:
+    db_connect: 'postgresql+pg8000://${ANCHORE_DB_USER}:${ANCHORE_DB_PASSWORD}@${ANCHORE_DB_HOST}:${ANCHORE_DB_PORT}/${ANCHORE_DB_NAME}'
+    db_connect_args:
+      timeout: 120
+      ssl: false
+    db_pool_size: 30
+    db_pool_max_overflow: 100
+```
+
+Within the docker-compose.yaml file you can specify the database environment variables to be passed into the config.yaml file like so: 
+
+```
+services:
+  # The primary API endpoint service
+  engine-api:
+    image: anchore/anchore-engine:v0.3.1
+    depends_on:
+    - engine-catalog
+    volumes:
+    - ./config-engine.yaml:/config/config.yaml:z
+    ports:
+    - "8228:8228"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 100m
+    environment:
+    - ANCHORE_ENDPOINT_HOSTNAME=engine-api
+    - ANCHORE_DB_HOST=anchore-db-instance.<123456>.us-east-2.rds.amazonaws.com
+    - ANCHORE_DB_NAME=anchore_db
+    - ANCHORE_DB_USER=dbusername
+    - ANCHORE_DB_PASSWORD=dbpassword
+    - ANCHORE_DB_PORT=dbport
+    - ANCHORE_AUTHZ_HANDLER=external
+    - ANCHORE_EXTERNAL_AUTHZ_ENDPOINT=http://enterprise-rbac-authorizer:8228
+    - ANCHORE_ENABLE_METRICS=false
+    command: ["anchore-manager", "service", "start",  "apiext"]
+```
+
+Anchore should now be able to connect to your external PostgreSQL DB instance. 
