@@ -60,6 +60,8 @@ Anchore Enterprise Feeds require access to the upstream data feeds from the foll
 
 **Note:** Air-gapped installs will differ.
 
+Anchore Enterprise by default will be accessible over http://localhost:3000.
+
 ### Database requirements
 
 Anchore Enterprise uses PostgreSQL object-relational database to store data. Before beginning install, determine whether you will be using the PostgreSQL database container that is automatically install or an external PostgreSQL instance. 
