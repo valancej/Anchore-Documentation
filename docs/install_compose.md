@@ -361,5 +361,5 @@ There may be cases where you need to inspect the logs for Anchore services.
 
 *User the docker logs command to view the logs for an individual container:*
 
-`docker logs <container-id>*
+`docker logs <container-id>`
 
