@@ -281,4 +281,13 @@ ANCHORE_CLI_USER=admin
 ANCHORE_CLI_PASS=foobar
 ```
 
+### Scanning your first image
+
+Now that both Anchore Enterprise and the Anchore CLI have been install and configured, you can begin to scan images.
+
+*Run the following command to scan your first image:*
+
+`anchore-cli image add docker.io/library/alpine:latest`
+
+
 ## Configuring an external PostgreSQL instance
