@@ -348,3 +348,18 @@ services:
 ```
 
 Anchore should now be able to connect to your external PostgreSQL DB instance. 
+
+## Accessing logs
+
+There may be cases where you need to inspect the logs for Anchore services. 
+
+### Viewing logs for containers
+
+*Use the docker-compose logs command to view the logs for all containers:*
+
+`docker-compose logs`
+
+*User the docker logs command to view the logs for an individual container:*
+
+`docker logs <container-id>*
+
