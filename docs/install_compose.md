@@ -359,7 +359,17 @@ There may be cases where you need to inspect the logs for Anchore services.
 
 `docker-compose logs`
 
-*User the docker logs command to view the logs for an individual container:*
+*Use the docker logs command to view the logs for an individual container:*
 
 `docker logs <container-id>`
+
+### Viewing logs for specific Anchore services
+
+You can execute into a specific container to view logs for an Anchore service.
+
+*Use the docker exec command to enter a container:*
+
+`docker exec -ti <container-id> /bin/bash`
+
+The logs are located in the `/var/log/anchore` directory within the container.
 
