@@ -2,7 +2,9 @@
 
 ## Anchore Support
 
-Join community Slack channel: https://anchore.com/slack
+Anchore Enterprise customers should have a primary point of contact at Anchore with whom they can raise immediate issues. In addition, our customers can file tickets via Anchore's Freshdesk site located here: https://anchore.freshdesk.com/support/home
+
+All Anchore users are welcome to join our community Slack channel located here: https://anchore.com/slack
 
 ## Getting started
 
