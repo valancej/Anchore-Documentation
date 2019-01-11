@@ -60,7 +60,7 @@ Anchore Enterprise Feeds require access to the upstream data feeds from the foll
 
 **Note:** Air-gapped installs will differ.
 
-Anchore Enterprise by default will be accessible over http://localhost:3000.
+Anchore Enterprise UI by default will be accessible over http://localhost:3000.
 
 ### Database requirements
 
