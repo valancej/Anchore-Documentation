@@ -1,12 +1,30 @@
 # Installing Anchore Enterprise with Docker Compose
 
 ## Table of Contents
-
+t
 <!--ts-->
   * [Anchore Support](#Anchore-Support)
   * [Getting started](#Getting-started)
     * [Hardware requirements](#Hardware-requirements)
     * [Docker requirements](#Docker-requirements)
+    * [Operating System requirements](#Operating-System-requirements)
+    * [Software requirements](#Software-requirements)
+    * [Network requirements](#Network-requirements)
+    * [Database requirements](#Database-requirements)
+  * [Installation](#Installation)
+    * [Step 1: Create installation location](#Step-1:Create-installation-location)
+    * [Step 2: Copy configuration files](#Step-2:Copy-configuration-files)
+    * [Step 3: Download and run the containers](#Step-3:Download-and-run-the-containers)
+    * [Step 4: Verify services are up](#Step-4:Verify-services-are-up)
+  * [Installing Anchore-CLI](#Installing-Anchore-CLI)
+    * [Install Anchore CLI from source](#Install-Anchore-CLI-from-source)
+    * [Configuring the Anchore CLI](#Configuring-the-Anchore-CLI)
+    * [Scanning your first image](#Scanning-your-first-image)
+  * [Configuring an external PostgreSQL instance](#Configuring-an-external-PostgreSQL-instance)
+  * [Accessing logs](#Accessing-logs)
+    * [Viewing logs for containers](#Viewing-logs-for-containers)
+    * [Viewing logs for specific Anchore services](#Viewing-logs-for-specific-Anchore-services)
+
 <!--te-->
 
 ## Anchore Support
