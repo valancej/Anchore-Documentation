@@ -12,7 +12,7 @@
     * [Network requirements](#Network-requirements)
     * [Database requirements](#Database-requirements)
   * [Installation](#Installation)
-    * [Step 1: Create installation location](#Step-1:Create-installation-location)
+    * [Step 1: Create installation location](#Step-1:-Create-installation-location)
     * [Step 2: Copy configuration files](#Step-2:Copy-configuration-files)
     * [Step 3: Download and run the containers](#Step-3:Download-and-run-the-containers)
     * [Step 4: Verify services are up](#Step-4:Verify-services-are-up)
