@@ -1,5 +1,14 @@
 # Installing Anchore Enterprise with Docker Compose
 
+## Table of Contents
+
+<!--ts-->
+  * [Anchore Support](#Anchore-Support)
+  * [Getting started](#Getting-started)
+    * [Hardware requirements](#Hardware-requirements)
+    * [Docker requirements](#Docker-requirements)
+<!--te-->
+
 ## Anchore Support
 
 Anchore Enterprise customers should have a primary point of contact at Anchore with whom they can raise immediate issues. In addition, our customers can file tickets via Anchore's Freshdesk site located here: https://anchore.freshdesk.com/support/home
