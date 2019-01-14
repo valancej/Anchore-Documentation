@@ -1,7 +1,7 @@
 # Installing Anchore Enterprise with Docker Compose
 
 ## Table of Contents
-t
+
 <!--ts-->
   * [Anchore Support](#Anchore-Support)
   * [Getting started](#Getting-started)
