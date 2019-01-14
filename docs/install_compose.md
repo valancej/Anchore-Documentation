@@ -17,6 +17,7 @@
     * [Step 3: Download and run the containers](#Step-3-Download-and-run-the-containers)
     * [Step 4: Verify services are up](#Step-4-Verify-services-are-up)
   * [Installing Anchore-CLI](#Installing-Anchore-CLI)
+    * [Running the Anchore CLI Container](#Running-the-Anchore-CLI-Container)
     * [Install Anchore CLI from source](#Install-Anchore-CLI-from-source)
     * [Configuring the Anchore CLI](#Configuring-the-Anchore-CLI)
     * [Scanning your first image](#Scanning-your-first-image)
@@ -283,6 +284,19 @@ At this point, Anchore Enteprise should now be fully installed and you can begin
 The Anchore CLI provides a command line interface on top of the Anchore Engine REST API.
 
 Anchore CLI github repo: https://github.com/anchore/anchore-cli
+Anchore CLI Dockerhub repo: https://hub.docker.com/r/anchore/engine-cli/
+
+### Running the Anchore CLI Container
+
+This image provides a simple way to interact with a Anchore Engine service installation.
+
+*To use the container run the following command:*
+
+`docker run -e ANCHORE_CLI_URL=http://localhost:8228/v1/ -it anchore/engine-cli`
+
+From this container's shell you can use 'anchore-cli' commands. Ex. `anchore-cli system status`
+
+**Note:** See below for commmand for analyzing your first image.
 
 ### Install Anchore CLI from source
 
