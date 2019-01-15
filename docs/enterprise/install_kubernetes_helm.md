@@ -391,7 +391,7 @@ There may be cases where you need to inspect the logs for Anchore services.
 
 ### Viewing logs for pod containers
 
-*Use the docker logs command to view the logs for an individual pod container:*
+*Use the kubectl logs command to view the logs for an individual pod container:*
 
 `kubectl logs <my-pod-name>`
 
@@ -399,7 +399,7 @@ There may be cases where you need to inspect the logs for Anchore services.
 
 You can execute into a specific pod to view logs for an Anchore service.
 
-*Use the docker exec command to enter a pod container:*
+*Use the kubectl exec command to enter a pod container:*
 
 `kubectl exec -it <my-pod-name> /bin/bash`
 
