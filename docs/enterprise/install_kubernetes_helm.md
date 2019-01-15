@@ -48,7 +48,7 @@ All Anchore users are welcome to join our community Slack channel located here: 
 
 ## Getting started
 
-This document will detail the necessary requirements for installing Anchore Enteprise with Docker Compose. 
+This document will detail the necessary requirements for installing Anchore Enteprise with Kubernetes and Helm. 
 
 ### Hardware requirements
 
