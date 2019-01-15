@@ -13,6 +13,7 @@
     * [Network requirements](#Network-requirements)
     * [Database requirements](#Database-requirements)
     * [Archive Driver requirements](#Archive-driver-requirements)
+  * [Production Deployment Recommendations](#Production-Deployment-Recommendation)
   * [Installation](#Installation)
     * [About this Helm Chart](#About-this-Helm-Chart)
     * [Step 1: Create kubernetes secret for license file](#Step-1-Create-kubernetes-secret-for-license-file)
@@ -125,6 +126,13 @@ Anchore Enterprise uses PostgreSQL object-relational database to store data. Bef
 The PostgreSQL container that is automatically installed with Anchore Enterprise is postgres:9. 
 
 Anchore Enterprise supports PostgeSQL version 9.6 or higher
+
+## Production Deployment Recommendations
+
+For production deployments of Anchore Enterprise we recommend the following:
+
+- Configuring an external PostgreSQL database instance.
+- Configuring an external archive driver.
 
 ## Installation
 
