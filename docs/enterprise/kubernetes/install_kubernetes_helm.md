@@ -13,7 +13,7 @@
     * [Network requirements](#Network-requirements)
     * [Database requirements](#Database-requirements)
     * [Archive Driver requirements](#Archive-driver-requirements)
-  * [Production Deployment Recommendations](#Production-Deployment-Recommendation)
+  * [Production Deployment Recommendations](#Production-Deployment-Recommendations)
   * [Installation](#Installation)
     * [About this Helm Chart](#About-this-Helm-Chart)
     * [Step 1: Create kubernetes secret for license file](#Step-1-Create-kubernetes-secret-for-license-file)
