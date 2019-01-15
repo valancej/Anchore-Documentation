@@ -35,7 +35,7 @@
       * [Keystone V3](#Keystone-V3)
       * [Keystone V2](#Keystone-V2)
       * [Legacy username/password](#Legacy-username-password)
-  * [Scaling individual compoenents](#Scaling-individual-components)
+  * [Scaling individual components](#Scaling-individual-components)
 
 
 <!--te-->
