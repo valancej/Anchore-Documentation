@@ -15,7 +15,7 @@
     * [Archive Driver requirements](#Archive-driver-requirements)
   * [Installation](#Installation)
     * [About this Helm Chart](#About-this-Helm-Chart)
-    * [Step 1: Create kubernetes secret containing the enterprise license.yaml file](#Step-1-Create-kubernetes-secret-containing-the-enterprise-license.yaml-file)
+    * [Step 1: Create kubernetes secret for license file](#Step-1-Create-kubernetes-secret-for-license-file)
     * [Step 2: Create kubernetes secret containing valid dockerhub credentials with access to private Anchore Enterprise repositories
 ](#Step-2-Create-kubernetes-secret-containing-valid-dockerhub-credentials-with-access-to-private-Anchore-Enterprise-repositories
 )
@@ -146,7 +146,7 @@ Enterprise components include:
 - Snyk vulnerability data
 - Graphical User Interface
 
-### Step 1: Create kubernetes secret containing the enterprise license.yaml file
+### Step 1: Create kubernetes secret for license file
 
 *Run kubectl command below to generate a secret for the license file: *
 
