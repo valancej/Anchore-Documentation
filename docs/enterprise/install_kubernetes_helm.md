@@ -406,23 +406,19 @@ Anchore should now be able to connect to your external PostgreSQL DB instance.
 
 There may be cases where you need to inspect the logs for Anchore services. 
 
-### Viewing logs for containers
+### Viewing logs for pod containers
 
-*Use the docker-compose logs command to view the logs for all containers:*
+*Use the docker logs command to view the logs for an individual pod container:*
 
-`docker-compose logs`
-
-*Use the docker logs command to view the logs for an individual container:*
-
-`docker logs <container-id>`
+`kubectl logs <my-pod-name>`
 
 ### Viewing logs for specific Anchore services
 
-You can execute into a specific container to view logs for an Anchore service.
+You can execute into a specific pod to view logs for an Anchore service.
 
-*Use the docker exec command to enter a container:*
+*Use the docker exec command to enter a pod container:*
 
-`docker exec -ti <container-id> /bin/bash`
+`kubectl exec -it <my-pod-name> /bin/bash`
 
 The logs are located in the `/var/log/anchore` directory within the container.
 
