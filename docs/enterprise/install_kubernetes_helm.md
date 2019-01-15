@@ -16,10 +16,8 @@
   * [Installation](#Installation)
     * [About this Helm Chart](#About-this-Helm-Chart)
     * [Step 1: Create kubernetes secret for license file](#Step-1-Create-kubernetes-secret-for-license-file)
-    * [Step 2: Create kubernetes secret containing valid dockerhub credentials with access to private Anchore Enterprise repositories
-](#Step-2-Create-kubernetes-secret-containing-valid-dockerhub-credentials-with-access-to-private-Anchore-Enterprise-repositories
-)
-    * [Step 3: Install Helm Chart using custom anchore_values.yaml files](#Step-3-Install-Helm-Chart-using-custom-anchore_values.yaml-file)
+    * [Step 2: Create kubernetes secret for dockerhub credentials](#Step-2-Create-kubernetes-secret-for-dockerhub-credentials)
+    * [Step 3: Install Helm Chart](#Step-3-Install-Helm-Chart)
     * [Step 4: Verify services are up](#Step-4-Verify-services-are-up)
   * [Installing Anchore-CLI](#Installing-Anchore-CLI)
     * [Running the Anchore CLI Container](#Running-the-Anchore-CLI-Container)
@@ -152,13 +150,17 @@ Enterprise components include:
 
 `kubectl create secret generic anchore-enterprise-license --from-file=license.yaml=<PATH/TO/LICENSE.YAML>`
 
-### Step 2: Create kubernetes secret containing valid dockerhub credentials with access to private Anchore Enterprise repositories
+### Step 2: Create kubernetes secret for dockerhub credentials
+
+Create kubernetes secret containing valid dockerhub credentials with access to private Anchore Enterprise repositories.
 
 *Run kubectl command below to generate a secret for dockerhub credentials:*
 
 `kubectl create secret docker-registry anchore-enterprise-pullcreds --docker-server=docker.io --docker-username=<DOCKERHUB_USER> --docker-password=<DOCKERHUB_PASSWORD> --docker-email=<EMAIL_ADDRESS>`
 
-### Step 3: Install Helm Chart using custom anchore_values.yaml file
+### Step 3: Install Helm Chart
+
+Install Helm Chart using custom anchore_values.yaml file
 
 **Note:** By default, all services (including a bundled DB instance) will be transient, and data will be lost if you shut down/restart.
 
