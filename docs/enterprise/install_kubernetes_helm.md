@@ -106,9 +106,10 @@ Anchore Enterprise UI by default will be accessible over http://localhost:3000.
 
 ### Database requirements
 
-Anchore Enterprise uses PostgreSQL object-relational database to store data. Before beginning install, determine whether you will be using the PostgreSQL database container that is automatically install or an external PostgreSQL instance. 
+Anchore Enterprise uses PostgreSQL object-relational database to store data. Before beginning install, determine whether you will be using the managed PostgreSQL service container that is automatically installed with this chart or an external PostgreSQL instance. 
 
-**Note:** See configuring external DB instance for more info.
+**Note:** It is recommended to use an external PostgreSQL instance for production grade deployments. See configuring external DB instance for more info.
+
 
 ### PostgreSQL versions
 
@@ -123,110 +124,100 @@ Anchore Enterprise supports PostgeSQL version 9.6 or higher
 
 ### About this Helm Chart
 
-This chart will can deploy both the Anchore Engine (OSS) and Anchore Enterprise systems. The chart is split into global and service specific configurations for the OSS Anchore Engine, as well as the global and service specific configurations for the Enterprise components. 
+This chart will can deploy both the Anchore Engine (OSS) and Anchore Enterprise systems. The chart is split into global and service specific configurations for the OSS Anchore Engine, as well as the global and service specific configurations for the Enterprise components. The recommended way to install Anchore Enterprise via this chart is to create a new file names `anchore_values.yaml` and add the desired fields. 
 
 - The `anchoreGlobal` section is for the configuration values required by all Anchore Engine components.
 - The `anchoreEnterpriseGlobal` section is for configuration values required by all Anchore Enginer Enterprise components. 
 - Service specific configuration values allow customization for each individual service.
 
-### Step 1: Create installation location
+In addition to the database the chart creates two deployments: 
 
-Create a directory to store the configuration files and license file.
+- Core services: The core services deployment includes the external api, notification service, kubenetes webhook, catalog and queuing service. 
+- Worker: The worker service conducts the image analysis and can be scaled out to handle concurrent evaluation of images.
 
-`mkdir ~/aevolume`
+In this example we will deploy the database, core services, a single worker, and the enterprise components.
 
-### Step 2: Copy configuration files
+Enterprise components include:
 
-Download the latest Anchore Enterprise container image which contains the necessary docker-compose and configuration files needed. In order to download the image, you'll need to login to docker using the dockerhub account that you provided to Anchore when you requested your license.
+- Role based access control (RBAC)
+- On-prem feeds service
+- Snyk vulnerability data
+- Graphical User Interface
 
-*Run the following commands to do so:* 
+### Step 1: Create kubernetes secret containing the enterprise license.yaml file
 
-`docker login`
+*Run kubectl command below to generate a secret for the license file: *
 
-Enter username and password.
+`kubectl create secret generic anchore-enterprise-license --from-file=license.yaml=<PATH/TO/LICENSE.YAML>`
 
-`docker pull docker.io/anchore/enterprise:latest`
+### Step 2: Create kubernetes secret containing valid dockerhub credentials with access to private Anchore Enterprise repositories
 
-Next, copy the included docker-compose.yaml file into the directory you created in step 1.
+*Run kubectl command below to generate a secret for dockerhub credentials:*
 
-*Via the following commands:*
+`kubectl create secret docker-registry anchore-enterprise-pullcreds --docker-server=docker.io --docker-username=<DOCKERHUB_USER> --docker-password=<DOCKERHUB_PASSWORD> --docker-email=<EMAIL_ADDRESS>`
 
-```
-docker create --name ae docker.io/anchore/enterprise:latest
-
-docker cp ae:/docker-compose.yaml ~/aevolume/docker-compose.yaml
-
-docker rm ae
-```
-
-Next, copy the license.yaml file that provided into the directory you created in step 1.
-
-*Via the following command:*
-
-`cp /path/to/your/license.yaml ~/aevolume/license.yaml`
-
-Once these steps are completed, your Anchore directory workspace should look like the following.
-
-*Check by running the following commands:*
-
-`cd ~/aevolume`
-
-```
-find .
-.
-./docker-compose.yaml
-./license.yaml
-```
-
-### Step 3: Download and run the containers
+### Step 3: Install Helm Chart using custom anchore_values.yaml file
 
 **Note:** By default, all services (including a bundled DB instance) will be transient, and data will be lost if you shut down/restart.
 
-*Run the following commands within the directory created in step 1 to pull and run the containers:*
+**Note:** This chart will install a managed PostgreSQL database and Redis.
+
+Create `anchore_values.yaml` file and enter the following:
 
 ```
-docker-compose pull
+## anchore_values.yaml
 
-docker-compose up -d
+anchoreEnterpriseGlobal:
+  enabled: True
 ```
 
-### Step 4: Verify services are up
+Set `anchoreEnterpriseGlobal` to true in order to enable the enterprise components.
 
-*After a bit of time, run the following command to verify the containers are running:*
+*Install the Helm Chart by running the following command (remember to pass in the custom values file):*
 
-`docker-compose ps`
+`helm install --name <release_name> -f /path/to/anchore_values.yaml stable/anchore-engine`
+
+### Step 4: Verify services are up 
+
+If the previous command was run successfully, you should see Anchore notes in the terminal describing how to access the Anchore Engine services. 
+
+*Run the following command to see the pods:* 
+
+`kubectl get pods`
 
 The output should look like the example below: 
 
 ```
-aevolume_anchore-db_1_732e4d561243                   docker-entrypoint.sh postgres    Up             5432/tcp              
-aevolume_engine-analyzer_1_d10cdb8b34f1              /docker-entrypoint.sh anch ...   Up (healthy)   8228/tcp              
-aevolume_engine-api_1_89fd746624f3                   /docker-entrypoint.sh anch ...   Up (healthy)   0.0.0.0:8228->8228/tcp
-aevolume_engine-catalog_1_680e4226efad               /docker-entrypoint.sh anch ...   Up (healthy)   8228/tcp              
-aevolume_engine-policy-engine_1_79ef08176b38         /docker-entrypoint.sh anch ...   Up (healthy)   8228/tcp              
-aevolume_engine-simpleq_1_42c62abcaf9d               /docker-entrypoint.sh anch ...   Up (healthy)   8228/tcp              
-aevolume_enterprise-feeds-db_1_244f869bdc97          docker-entrypoint.sh postgres    Up             5432/tcp              
-aevolume_enterprise-feeds_1_1810c017b6d7             /docker-entrypoint.sh anch ...   Up (healthy)   0.0.0.0:8448->8228/tcp
-aevolume_enterprise-rbac-authorizer_1_8b1d8c63ad8c   /docker-entrypoint.sh anch ...   Up (healthy)   8089/tcp, 8228/tcp    
-aevolume_enterprise-rbac-manager_1_3f7aa316211c      /docker-entrypoint.sh anch ...   Up (healthy)   0.0.0.0:8229->8228/tcp
-aevolume_enterprise-ui-redis_1_50e706cb20aa          docker-entrypoint.sh redis ...   Up             6379/tcp              
-aevolume_enterprise-ui_1_dafff06270b2                /bin/sh -c node /home/node ...   Up             0.0.0.0:3000->3000/tcp
+anchore-demo-anchore-engine-analyzer-5c87776cbc-4drvr           1/1       Running   0          47m
+anchore-demo-anchore-engine-api-7868d8bc68-xjsqg                3/3       Running   0          47m
+anchore-demo-anchore-engine-catalog-546bfbc499-jbwls            1/1       Running   0          47m
+anchore-demo-anchore-engine-enterprise-feeds-7fd997b67f-f5pv9   1/1       Running   0          47m
+anchore-demo-anchore-engine-enterprise-ui-6688fc7d47-bd4fn      1/1       Running   0          47m
+anchore-demo-anchore-engine-policy-74c4956dc7-l66gw             1/1       Running   0          47m
+anchore-demo-anchore-engine-simplequeue-784597f666-qssrm        1/1       Running   0          47m
+anchore-demo-anchore-feeds-db-64f895cd75-8fshd                  1/1       Running   0          47m
+anchore-demo-anchore-ui-redis-master-0                          1/1       Running   0          47m
+anchore-demo-postgresql-54f5d746d5-drzrd                        1/1       Running   0          47m
 ```
 
 *In order to check on the status of the Anchore services, run the following command:*
 
-`docker-compose exec engine-api anchore-cli system status`
+`kubectl run -i --tty anchore-cli --restart=Always --image anchore/engine-cli --env ANCHORE_CLI_USER=admin --env ANCHORE_CLI_PASS=${ANCHORE_CLI_PASS} --env ANCHORE_CLI_URL=http://<anchore_service_endpoint>:8228/v1/`
+
+From within the container, you are able to use 'anchore-cli' commands:
+
+Ex. `anchore-cli system status`
 
 The ouput should look like the example below:
 
 ```
-Service policy_engine (anchore-quickstart, http://engine-policy-engine:8228): up
-Service catalog (anchore-quickstart, http://engine-catalog:8228): up
-Service analyzer (anchore-quickstart, http://engine-analyzer:8228): up
-Service rbac_authorizer (anchore-quickstart, http://enterprise-rbac-authorizer:8228): up
-Service simplequeue (anchore-quickstart, http://engine-simpleq:8228): up
-Service apiext (anchore-quickstart, http://engine-api:8228): up
-Service rbac_manager (anchore-quickstart, http://enterprise-rbac-manager:8228): up
+Service analyzer (anchore-demo-anchore-engine-analyzer-5c87776cbc-4drvr, http://anchore-demo-anchore-engine-analyzer:8084): up
+Service simplequeue (anchore-demo-anchore-engine-simplequeue-784597f666-qssrm, http://anchore-demo-anchore-engine-simplequeue:8083): up
+Service rbac_authorizer (anchore-demo-anchore-engine-api-7868d8bc68-xjsqg, http://localhost:8089): up
+Service apiext (anchore-demo-anchore-engine-api-7868d8bc68-xjsqg, http://anchore-demo-anchore-engine-api:8228): up
+Service rbac_manager (anchore-demo-anchore-engine-api-7868d8bc68-xjsqg, http://anchore-demo-anchore-engine-api:8229): up
+Service policy_engine (anchore-demo-anchore-engine-policy-74c4956dc7-l66gw, http://anchore-demo-anchore-engine-policy:8087): up
+Service catalog (anchore-demo-anchore-engine-catalog-546bfbc499-jbwls, http://anchore-demo-anchore-engine-catalog:8082): up
 
 Engine DB Version: 0.0.8
 Engine Code Version: 0.3.1
@@ -254,7 +245,7 @@ Feed sync: Success.
 
 *You can check on the status of the data feeds by running the following command:*
 
-`docker-compose exec engine-api anchore-cli system feeds list`
+`anchore-cli system feeds list`
 
 The ouput should look like the example below:
 
@@ -311,7 +302,7 @@ This image provides a simple way to interact with a Anchore Engine service insta
 
 *To use the container run the following command:*
 
-`docker run -e ANCHORE_CLI_URL=http://localhost:8228/v1/ -it anchore/engine-cli`
+`kubectl run -i --tty anchore-cli --restart=Always --image anchore/engine-cli --env ANCHORE_CLI_USER=admin --env ANCHORE_CLI_PASS=${ANCHORE_CLI_PASS} --env ANCHORE_CLI_URL=http://<anchore_service_endpoint>:8228/v1/`
 
 From this container's shell you can use 'anchore-cli' commands. Ex. `anchore-cli system status`
 
