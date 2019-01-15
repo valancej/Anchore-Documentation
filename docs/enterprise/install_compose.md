@@ -347,7 +347,7 @@ Here is the database section of the config.yaml file with environment variables 
 
 *Database section of config.yaml file*
 
-```
+```YAML
 credentials:
   database:
     db_connect: 'postgresql+pg8000://${ANCHORE_DB_USER}:${ANCHORE_DB_PASSWORD}@${ANCHORE_DB_HOST}:${ANCHORE_DB_PORT}/${ANCHORE_DB_NAME}'
@@ -362,7 +362,7 @@ Within the docker-compose.yaml file you can specify the database environment var
 
 *API service section of docker-compose.yaml file*
 
-```
+```YAML
 services:
   # The primary API endpoint service
   engine-api:
