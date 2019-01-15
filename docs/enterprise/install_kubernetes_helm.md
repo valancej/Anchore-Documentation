@@ -55,7 +55,7 @@ The following details the minimum hardware requirements needed to run a single i
 - A running Kubernetes Cluster is required.
 - kubectl configured to access your Kubernetes cluster.
 
-*Read more on Kubernetes here:* https://kubernetes.io/
+*Read more on Kubernetes here:* https://kubernetes.io/  
 *Read more on kubectl configuration here:* https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 ### Helm requirements
