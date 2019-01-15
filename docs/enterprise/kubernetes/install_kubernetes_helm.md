@@ -133,6 +133,7 @@ For production deployments of Anchore Enterprise we recommend the following:
 
 - Configuring an external PostgreSQL database instance.
 - Configuring an external archive driver.
+- Setting non-default password for database and Anchore.
 
 ## Installation
 
