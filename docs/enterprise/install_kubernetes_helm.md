@@ -28,6 +28,15 @@
   * [Accessing logs](#Accessing-logs)
     * [Viewing logs for containers](#Viewing-logs-for-containers)
     * [Viewing logs for specific Anchore services](#Viewing-logs-for-specific-Anchore-services)
+  * [Configuring an Archive Driver](#Configuring-an-Archive-Driver)
+    * [Configuring compression](#Configuring-compression)
+    * [S3](#S3)
+    * [Swift](#Swift)
+      * [Keystone V3](#Keystone-V3)
+      * [Keystone V2](#Keystone-V2)
+      * [Legacy username/password](#Legacy-username-password)
+  * [Scaling individual compoenents](#Scaling-individual-components)
+
 
 <!--te-->
 
