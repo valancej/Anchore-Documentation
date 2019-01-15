@@ -14,6 +14,7 @@
     * [Database requirements](#Database-requirements)
     * [Archive Driver requirements](#Archive-driver-requirements)
   * [Installation](#Installation)
+    * [About this Helm Chart](#About-this-Helm-Chart)
     * [Step 1: Create installation location](#Step-1-Create-installation-location)
     * [Step 2: Copy configuration files](#Step-2-Copy-configuration-files)
     * [Step 3: Download and run the containers](#Step-3-Download-and-run-the-containers)
@@ -119,7 +120,14 @@ Anchore Enterprise supports PostgeSQL version 9.6 or higher
 
 - Approved Dockerhub username is required to pull Anchore Enterprise images.
 - A valid Anchore Enterprise license.yaml file.
-- docker-compose.yaml file (will detail how to obtain in steps below)
+
+### About this Helm Chart
+
+This chart will can deploy both the Anchore Engine (OSS) and Anchore Enterprise systems. The chart is split into global and service specific configurations for the OSS Anchore Engine, as well as the global and service specific configurations for the Enterprise components. 
+
+- The `anchoreGlobal` section is for the configuration values required by all Anchore Engine components.
+- The `anchoreEnterpriseGlobal` section is for configuration values required by all Anchore Enginer Enterprise components. 
+- Service specific configuration values allow customization for each individual service.
 
 ### Step 1: Create installation location
 
