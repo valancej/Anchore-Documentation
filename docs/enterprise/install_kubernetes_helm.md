@@ -396,3 +396,139 @@ You can execute into a specific pod to view logs for an Anchore service.
 
 The logs are located in the `/var/log/anchore` directory within the container.
 
+## Configuring an Archive Driver
+
+**Note:** It is recommended to use an external archive driver for production deployments.
+
+The archive subsystem of Anchore Engine is what stores large json documents and can consume quite a lot of storage if you analyze a lot of images. A general rule for storage provisioning is 10MB per image analyzed, so with thousands of analyzed images, you may need many gigabytes of storage. The Archive drivers now support other backends than just PostgreSQL, so you can leverage external and scalable storage systems and keep the postgresql storage usage to a much lower level.
+
+### Configuring compression
+
+The archive system has compression available to help reduce size of objects and storage consumed in exchange for slightly slower performance and more cpu usage. There are two config values:
+
+To toggle on/off (default is True), and set a minimum size for compression to be used (to avoid compressing things too small to be of much benefit, the default is 100):
+
+```YAML
+## anchore_values.yaml
+anchoreCatalog:
+  archive:
+    compression:
+      enabled=True
+      min_size_kbytes=100
+```
+
+The supported archive drivers are:
+
+- S3 - Any AWS s3-api compatible system (e.g. minio, scality, etc)
+- OpenStack Swift
+- Local FS - A local filesystem on the core pod. Does not handle sharding or replication, so generally only for testing.
+- DB - the default postgresql backend
+
+### S3
+
+```YAML
+## anchore_values.yaml
+anchoreCatalog:
+  archive:
+    storage_driver:
+      name: 's3'
+      config:
+        access_key: 'MY_ACCESS_KEY'
+        secret_key: 'MY_SECRET_KEY'
+        #iamauto: True
+        url: 'https://S3-end-point.example.com'
+        region: null
+        bucket: 'anchorearchive'
+        create_bucket: True
+    compression:
+    ... # Compression config here
+```
+
+### Swift
+
+The swift configuration is basically a pass-thru to the underlying pythonswiftclient so it can take quite a few different options depending on your swift deployment and config. The best way to configure the swift driver is by using a custom anchore_values.yaml
+
+The Swift driver supports three authentication methods:
+
+- Keystone V3
+- Keystone V2
+- Legacy (username / password)
+
+#### Keystone V3:
+
+```YAML
+## anchore_values.yaml
+anchoreCatalog:
+  archive:
+    storage_driver:
+      name: swift
+      config:
+        auth_version: '3'
+        os_username: 'myusername'
+        os_password: 'mypassword'
+        os_project_name: myproject
+        os_project_domain_name: example.com
+        os_auth_url: 'foo.example.com:8000/auth/etc'
+        container: 'anchorearchive'
+        ## Optionally
+        create_container: True
+    compression:
+    ... ## Compression config here
+```
+
+#### Keystone V2:
+
+```YAML
+## anchore_values.yaml
+anchoreCatalog:
+  archive:
+    storage_driver:    
+      name: swift
+      config:
+        auth_version: '2'
+        os_username: 'myusername'
+        os_password: 'mypassword'
+        os_tenant_name: 'mytenant'
+        os_auth_url: 'foo.example.com:8000/auth/etc'
+        container: 'anchorearchive'
+        ## Optionally
+        create_container: True
+    compression:
+    ... ## Compression config here
+```
+
+#### Legacy username/password:
+
+````YAML
+anchoreCatalog:
+  archive:
+    storage_driver:
+      name: swift
+      config:
+        user: 'user:password'
+        auth: 'http://swift.example.com:8080/auth/v1.0'
+        key:  'anchore'
+        container: 'anchorearchive'
+        # Optionally
+        create_container: True
+    compression:
+    ... # Compression config here
+````
+
+## Scaling individual components
+
+As of Chart version 0.9.0, all services can now be scaled-out by increasing the replica counts. The chart now supports this configuration.
+
+To set a specific number of service containers:
+
+````YAML
+anchoreAnalyzer:
+  replicaCount: 5
+
+anchorePolicyEngine:
+  replicaCount: 3
+````
+
+To update the number in a running configuration:
+
+`helm upgrade --set anchoreAnalyzer.replicaCount=2 <releasename> stable/anchore-engine -f anchore_values.yaml`
