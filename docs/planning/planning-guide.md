@@ -28,7 +28,7 @@ Anchore is container-native and is built and delivered as a Docker container. Yo
 
 ### What is inside? 
 
-Anchore is a collection of services that can be deployed co-located or fulled distributed or anything in-between, as such it can be scaled out horizonally to increase analysis throughput. The only external system required is a PostgreSQL database (version 9.6 or higher) that all services will connect to. 
+Anchore is a collection of services that can be deployed co-located or fully distributed or anything in-between, as such it can be scaled out horizonally to increase analysis throughput. The only external system required is a PostgreSQL database (version 9.6 or higher) that all services will connect to. 
 
 ### How Anchore works?
 
