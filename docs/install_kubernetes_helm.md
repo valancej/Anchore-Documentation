@@ -1,4 +1,4 @@
-# Installing Anchore Enterprise with Docker Compose
+# Installing Anchore Enterprise with Kubernetes & Helm
 
 ## Table of Contents
 
@@ -6,11 +6,13 @@
   * [Anchore Support](#Anchore-Support)
   * [Getting started](#Getting-started)
     * [Hardware requirements](#Hardware-requirements)
-    * [Docker requirements](#Docker-requirements)
+    * [Kubernetes requirements](#Kubernetes-requirements)
+    * [Helm requirements](#Helm-requirements)
     * [Operating System requirements](#Operating-System-requirements)
     * [Software requirements](#Software-requirements)
     * [Network requirements](#Network-requirements)
     * [Database requirements](#Database-requirements)
+    * [Archive Driver requirements](#Archive-driver-requirements)
   * [Installation](#Installation)
     * [Step 1: Create installation location](#Step-1-Create-installation-location)
     * [Step 2: Copy configuration files](#Step-2-Copy-configuration-files)
@@ -341,7 +343,7 @@ As stated in the database requirements above, Anchore requires access to a Postg
 
 **Note:** The default configuration points to the host anchore-db on port 5432 using username postgres and password mysecretpassword.
 
-If you are configuring an external database service (e.g. Amazon RDS), update the host, port, username, password, and database name.
+If you are configuring an external database service (e.g. Amazon RDS), updated the host, port, username, password, and database name.
 
 Here is the database section of the config.yaml file with environment variables being passed in: 
 
