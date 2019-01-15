@@ -15,9 +15,11 @@
     * [Archive Driver requirements](#Archive-driver-requirements)
   * [Installation](#Installation)
     * [About this Helm Chart](#About-this-Helm-Chart)
-    * [Step 1: Create installation location](#Step-1-Create-installation-location)
-    * [Step 2: Copy configuration files](#Step-2-Copy-configuration-files)
-    * [Step 3: Download and run the containers](#Step-3-Download-and-run-the-containers)
+    * [Step 1: Create kubernetes secret containing the enterprise license.yaml file](#Step-1-Create-kubernetes-secret-containing-the-enterprise-license.yaml-file)
+    * [Step 2: Create kubernetes secret containing valid dockerhub credentials with access to private Anchore Enterprise repositories
+](#Step-2-Create-kubernetes-secret-containing-valid-dockerhub-credentials-with-access-to-private-Anchore-Enterprise-repositories
+)
+    * [Step 3: Install Helm Chart using custom anchore_values.yaml files](#Step-3-Install-Helm-Chart-using-custom-anchore_values.yaml-file)
     * [Step 4: Verify services are up](#Step-4-Verify-services-are-up)
   * [Installing Anchore-CLI](#Installing-Anchore-CLI)
     * [Running the Anchore CLI Container](#Running-the-Anchore-CLI-Container)
