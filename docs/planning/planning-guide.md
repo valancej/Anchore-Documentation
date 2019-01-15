@@ -30,6 +30,29 @@ Anchore is container-native and is built and delivered as a Docker container. Yo
 
 Anchore is a collection of services that can be deployed co-located or fully distributed or anything in-between, as such it can be scaled out horizonally to increase analysis throughput. The only external system required is a PostgreSQL database (version 9.6 or higher) that all services will connect to. 
 
+### What are the components of Anchore Enterprise? 
+
+#### Client Tier
+
+- Enterprise UI
+- Anchore CLI
+
+#### API Tier
+
+- External API
+- Enterprise RBAC Manager API
+- Enterprise RBAC Authorizer (internal)
+
+#### State Tier
+
+- Catalog
+- SimpleQueue
+- Policy-Engine
+
+#### Worker Tier
+
+- Analyzer
+
 ### How Anchore works?
 
 1. Fetch the Docker image content and extract it, but never execute it.
@@ -39,4 +62,6 @@ Anchore is a collection of services that can be deployed co-located or fully dis
 5. Update the latest external data used for policy evaluation and vulnerability matches, and automatically update image analysis results against any new data found upstream.
 6. Notify users of changes to policy evaluations and vulnerability matches.
 7. Repeat steps 5 & 6 on intervals to ensure latest external data and updated image evaluations. 
+
+### What is required?
 
