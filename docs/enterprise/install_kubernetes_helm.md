@@ -50,11 +50,21 @@ The following details the minimum hardware requirements needed to run a single i
 
 **Note:** Increased CPUs and RAM is recommended for better performance.
 
-### Docker requirements
+### Kubernetes requirements
 
-Anchore Enterprise is delivered as a Docker container, so a Docker comptabile runtime is a requirement. 
+- A running Kubernetes Cluster is required.
+- kubectl configured to access your Kubernetes cluster.
 
-Anchore Enterprise supports Docker runtime versions 1.12 or higher and Compose version 2.x.
+*Read more on Kubernetes here:* https://kubernetes.io/
+
+*Read more on kubectl configuration here:* https://kubernetes.io/docs/tasks/tools/install-kubectl/
+
+### Helm requirements
+
+- The Helm binary should be installed and available on your path.
+- Tiller, the server side component for Helm, should be installed and available inside your Kubernetes cluster.
+
+*Read more on Helm here:* https://helm.sh/
 
 ### Operating System requirements
 
