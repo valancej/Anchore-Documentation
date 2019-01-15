@@ -34,7 +34,7 @@
     * [Swift](#Swift)
       * [Keystone V3](#Keystone-V3)
       * [Keystone V2](#Keystone-V2)
-      * [Legacy username/password](#Legacy-username/password)
+      * [Legacy username/password](#Legacy-username-/-password)
   * [Scaling individual components](#Scaling-individual-components)
 
 
