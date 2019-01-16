@@ -33,7 +33,7 @@ Anchore is a collection of services that can be deployed co-located or fully dis
 
 ## Anchore Components? 
 
-Below describes the Anchore Enterprise services.
+Below lists the Anchore Enterprise services.
 
 ### Enterprise Services
 
