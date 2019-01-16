@@ -128,3 +128,10 @@ The analysis process is composed of several steps and utilizes several system co
 ![alt text](https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/36020808611/original/9W4uwUyT5suYarn83yOGsWPynNnxtPJKdw.jpg?1541503856)
 
 ## Capacity planning
+
+Before allocating designated resources for Anchore, users should ask themselves the following questions:
+
+1. What are the total number of images per day they will likely be analyzing with Anchore?
+2. What are the total number of analyzed images they would like to keep within Anchore? Is an audit trail of older images important? Is there an interval of time where analyzed image data can be thrown out? 
+3. What is the largest image that Anchore will be conducting analysis on?
+
