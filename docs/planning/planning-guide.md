@@ -5,9 +5,9 @@
 <!--ts-->
   * [Introduction](#Introduction)
   * [Anchore Overview and Concepts](#Anchore-Overview-and-Concepts)
+  * [Anchore Components](#Anchore-Components)
     * [Enterprise Services](#Enterprise-Services)
     * [Enterprise Feeds Service](#Enterprise-Feeds-Service)
-  * [Anchore Components](#Anchore-Components)
 
 <!--te-->
 
@@ -32,6 +32,16 @@ Anchore is container-native and is built and delivered as a Docker container. Yo
 ### What is inside? 
 
 Anchore is a collection of services that can be deployed co-located or fully distributed or anything in-between, as such it can be scaled out horizonally to increase analysis throughput. The only external system required is a PostgreSQL database (version 9.6 or higher) that all services will connect to. 
+
+### How Anchore works?
+
+1. Fetch the Docker image content and extract it, but never execute it.
+2. Analyze the image by running a set of Anchore analyzers over the image content to extract and categorize as much metadata as possible. 
+3. Save the resulting analysis data in the database for future use and audit.
+4. Evaluate policies against the resulting analysis data, including vulnerability matches on the artifact discovered within the image. 
+5. Update the latest external data used for policy evaluation and vulnerability matches, and automatically update image analysis results against any new data found upstream.
+6. Notify users of changes to policy evaluations and vulnerability matches.
+7. Repeat steps 5 & 6 on intervals to ensure latest external data and updated image evaluations. 
 
 ## Anchore Components? 
 
@@ -85,17 +95,6 @@ Anchore Enterprise Feeds require access to upstream data feeds from the followin
 | static.nvd.nist.gov | 443 | NVD Database |
 | launchpad.net/ubuntu-cve-tracker | 443 | Ubuntu Data |
 | data.anchore-enterprise.com | 443 | Snyk data |
-
-
-### How Anchore works?
-
-1. Fetch the Docker image content and extract it, but never execute it.
-2. Analyze the image by running a set of Anchore analyzers over the image content to extract and categorize as much metadata as possible. 
-3. Save the resulting analysis data in the database for future use and audit.
-4. Evaluate policies against the resulting analysis data, including vulnerability matches on the artifact discovered within the image. 
-5. Update the latest external data used for policy evaluation and vulnerability matches, and automatically update image analysis results against any new data found upstream.
-6. Notify users of changes to policy evaluations and vulnerability matches.
-7. Repeat steps 5 & 6 on intervals to ensure latest external data and updated image evaluations. 
 
 ### What is required?
 
