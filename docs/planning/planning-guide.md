@@ -1,4 +1,4 @@
-## Anchore Planning Guide
+## Anchore Enterprise Planning Guide
 
 ## Table of Contents
 
