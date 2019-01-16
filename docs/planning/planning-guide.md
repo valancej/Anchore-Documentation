@@ -101,6 +101,24 @@ Anchore Enterprise Feeds require access to upstream data feeds from the followin
 | launchpad.net/ubuntu-cve-tracker | 443 | Ubuntu Data |
 | data.anchore-enterprise.com | 443 | Snyk data |
 
+### Anchore Databases and Persistence
+
+#### Anchore Engine Database
+
+Anchore is built around a single Postgresql database, using the default public schema namespace. This is the standard open-source installed db and contains tables for all necessary services. The services do not communicate through the db, only through explicit API calls, but the database tables are consolidated for easier management operations.
+
+#### Anchore Enterprise Database
+
+Anchore Enterprise has its own database tables and uses a separate anchore_enterprise schema namespace in the same postgresql database as the open-source installed tables. This schema has its own version tracking and upgrade mechanisms and includes the data for the RBAC systems as well as the Feed Service (if configured to use the same postgresql instance).
+
+#### Feed Service Database 
+
+The feed service uses the same namespace/schema as the other enterprise components but can be configured to use an entirely different database instance if desired in order to isolate performance and load. This is particularly useful for air-gapped installations. The feed service uses the common Enterprise db upgrade mechanisms, if you install and configure the feed service to use its own db instance you will still see all the enterprise tables present, but they will not be used in that specific case.
+
+#### Redis
+
+Redis is a requirement of the Enterprise UI and is used for session state and caching. It is currently not expected to be persisted, only served from memory since that data is small.
+
 ### Registry communication
 
 Given that Anchore scans built Docker images a container registry is a hard requirement in order for Anchore to being analysis. The components of Anchore that need to communicate with the configured container registres are the Catalog and API service. Anchore can be instructed to download image from any Docker V2 compatible registry. Anchore will attempt to download images from any registry without requirement further configuration. For registries where username and password authorization is required, the registry must be added to Anchore prior to any image analysis. 
@@ -159,4 +177,3 @@ DB | Primary Resource Consumption | Scaling Metric | Recommended Resources (in A
 ## Troubleshooting
 
 Troubleshooting Anchore is typically done by interactions with the Anchore CLI or by executing into a container and looking at the logs of particular services. 
-
