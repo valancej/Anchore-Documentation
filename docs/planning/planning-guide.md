@@ -9,6 +9,7 @@
     * [Enterprise Services](#Enterprise-Services)
     * [Enterprise Feeds Service](#Enterprise-Feeds-Service)
     * [Registry communication](#Registry-communication)
+  * [How is Anchore typically used?](#How-is-Anchore-typically-used?)
   * [Capacity planning](#Capacity-planning)
 
 <!--te-->
@@ -103,7 +104,7 @@ Anchore Enterprise Feeds require access to upstream data feeds from the followin
 Given that Anchore scans built Docker images a container registry is a hard requirement in order for Anchore to being analysis. The components of Anchore that need to communicate with the configured container registres are the Catalog and API service. Anchore can be instructed to download image from any Docker V2 compatible registry. Anchore will attempt to download images from any registry without requirement further configuration. For registries where username and password authorization is required, the registry must be added to Anchore prior to any image analysis. 
 
 
-### Where Anchore lives? 
+## How is Anchore typically used? 
 
 Anchore Enterprise is typically deployed as a running service and is commonly used in the following ways:
 
@@ -112,6 +113,6 @@ Anchore Enterprise is typically deployed as a running service and is commonly us
 
 **Note:** For CI/CD integrations, it is common to scan Docker images after they are built and prior to deployment to a production registry. In this case, a staging registry is used to push the built images, Anchore then fetches the images from the staging registry, conducts analysis, and depending on the result of the policy evaluation, users can choose to promote these scanned images to a production registry. 
 
-**Note:** For CI/CD integrations, the build pipeline must be able to access the engine-api endpoint. 
+**Note:** For CI/CD integrations, the build pipeline must be able to access the Anchore engine-api endpoint. 
 
 ## Capacity planning
