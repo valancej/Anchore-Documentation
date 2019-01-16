@@ -121,6 +121,6 @@ Anchore Enterprise is typically deployed as a running service and is commonly us
 
 Anchore image analysis is performed as a distinct, asynchronous, and scheduled task driven by queues that analyzer workers periodically poll. Image records have a small state-machine as follows:
 
-[!Alt text](https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/36021354861/original/YSqCPgSG77OXMHOjx7P2Do9Bld4Zar5gVw.jpg?1542049669)
+![alt text](https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/36021354861/original/YSqCPgSG77OXMHOjx7P2Do9Bld4Zar5gVw.jpg?1542049669)
 
 ## Capacity planning
