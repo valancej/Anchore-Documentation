@@ -32,6 +32,8 @@ Anchore is a collection of services that can be deployed co-located or fully dis
 
 ### What are the components of Anchore Enterprise? 
 
+Below describes the Anchore Enterprise services.
+
 #### Enterprise Services
 
 ##### Client Tier
