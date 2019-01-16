@@ -141,7 +141,6 @@ Before allocating designated resources for Anchore, users should ask themselves 
 
  DB | Purpose | Scaling Metric | Storage | Recommended Resources (in AWS) |
 | :---- | :---- | :----------- | :------ | :----------------------------- |
-| Engine DB | Backs all engine services | API Load and Image ingress load | 50-100GB initially
-~50MB per image analyzed (avg) | db.r4.large or xlarge |
+| Engine DB | Backs all engine services | API Load and Image ingress load | 50-100GB initially ~50MB per image analyzed (avg) | db.r4.large or xlarge |
 | Feed Service DB | Feed data | API Load | 20GB (grows with feed data size, slowly) | db.t2.large |
 | Feed Service RubygemsDB | Scratch space for a Rubygems driver | None | 10GB | local postgresSQL container (ephemeral), 4GB Memory reserved |
