@@ -4,7 +4,7 @@
 
 <!--ts-->
   * [Introduction](#Introduction)
-  * [Anchore Overview and Concepts](#Anchore-Overview-and-Concepts)
+  * [Anchore Overview](#Anchore-Overview)
   * [Anchore Components](#Anchore-Components)
     * [Enterprise Services](#Enterprise-Services)
     * [Enterprise Feeds Service](#Enterprise-Feeds-Service)
@@ -20,13 +20,14 @@
 
 The intent of this document is to provide an overview and planning guide in preparation for an installation of Anchore Enterprise. Following reading this guide, Anchore operators should understand the following and be capable of proceeding with a successful install:
 
-- Core components of Anchore and concepts.
+- Anchore Overview
+- Anchore Components
 - Where Anchore will be run?
 - What Anchore needs to communicate with?
 - Common Anchore points of integration.
 - Anchore capacity planning.
 
-## Anchore Overview and Concepts
+## Anchore Overview
 
 Anchore is a Docker container image static analysis and policy-based compliance tool that automates the inspection, analysis, and evaluation of images against user-defined checks to allow software development teams to deploy containers with a high level of confidence by ensuring the workload content meets the required criteria. 
 
