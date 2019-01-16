@@ -8,7 +8,7 @@
   * [Anchore Components](#Anchore-Components)
     * [Enterprise Services](#Enterprise-Services)
     * [Enterprise Feeds Service](#Enterprise-Feeds-Service)
-    * [What is required for image analysis?](#What-is-required-for-image-analysis?)
+    * [Registry communication](#Registry-communication)
   * [Capacity planning](#Capacity-planning)
 
 <!--te-->
@@ -98,7 +98,7 @@ Anchore Enterprise Feeds require access to upstream data feeds from the followin
 | launchpad.net/ubuntu-cve-tracker | 443 | Ubuntu Data |
 | data.anchore-enterprise.com | 443 | Snyk data |
 
-### What is required for image analysis?
+### Registry communication
 
 Given that Anchore scans built Docker images a container registry is a hard requirement in order for Anchore to being analysis. The components of Anchore that need to communicate with the configured container registres are the Catalog and API service. Anchore can be instructed to download image from any Docker V2 compatible registry. Anchore will attempt to download images from any registry without requirement further configuration. For registries where username and password authorization is required, the registry must be added to Anchore prior to any image analysis. 
 
