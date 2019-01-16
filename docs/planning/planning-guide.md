@@ -8,6 +8,7 @@
   * [Anchore Components](#Anchore-Components)
     * [Enterprise Services](#Enterprise-Services)
     * [Enterprise Feeds Service](#Enterprise-Feeds-Service)
+    * [What is required for image analysis?](#What-is-required-for-image-analysis?)
   * [Capacity planning](#Capacity-planning)
 
 <!--te-->
