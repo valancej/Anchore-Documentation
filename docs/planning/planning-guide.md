@@ -102,4 +102,16 @@ Anchore Enterprise Feeds require access to upstream data feeds from the followin
 
 Given that Anchore scans built Docker images a container registry is a hard requirement in order for Anchore to being analysis. The components of Anchore that need to communicate with the configured container registres are the Catalog and API service. Anchore can be instructed to download image from any Docker V2 compatible registry. Anchore will attempt to download images from any registry without requirement further configuration. For registries where username and password authorization is required, the registry must be added to Anchore prior to any image analysis. 
 
+
+### Where Anchore lives? 
+
+Anchore Enterprise is typically deployed as a running service and is commonly used in the following ways:
+
+- Iteractive Mode - Use the APIs to explicitly request an image analysis, get a policy evaluation and content reports, bu the engine only performs operations when specifically requested by a user or tooling. 
+- Watch Mode - Use the APIs to configure Anchore to poll specific registries and repositories/tags to watch for new images added and automatically pull and evaluate them, emitting notifications when a given tag's vulnerability or policy evaluation state changes.
+
+**Note:** For CI/CD integrations, it is common to scan Docker images after they are built and prior to deployment to a production registry. In this case, a staging registry is used to push the built images, Anchore then fetches the images from the staging registry, conducts analysis, and depending on the result of the policy evaluation, users can choose to promote these scanned images to a production registry. 
+
+**Note:** For CI/CD users, the build pipeline must be able to access the engine-api. 
+
 ## Capacity planning
