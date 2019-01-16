@@ -137,6 +137,9 @@ Before allocating designated resources for Anchore, users should ask themselves 
 
 ### Core components recommendations
 
+DB | Primary Resource Consumption | Scaling Metric | Recommended Resources (in AWS) |
+| :---- | :---- | :----------- | :----------------------------- |
+
 ### Database recommendations
 
  DB | Purpose | Scaling Metric | Storage | Recommended Resources (in AWS) |
