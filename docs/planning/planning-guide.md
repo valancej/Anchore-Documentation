@@ -135,6 +135,8 @@ Before allocating designated resources for Anchore, users should ask themselves 
 2. What are the total number of analyzed images they would like to keep within Anchore? Is an audit trail of older images important? Is there an interval of time where analyzed image data can be thrown out? 
 3. What is the largest image that Anchore will be conducting analysis on?
 
+*Load characteristics will vary by size of images, contents within the images, system throughput needs, policy evaluations, and user API interactions.*
+
 ### Component performance attributes
 
 DB | Primary Resource Consumption | Scaling Metric | Recommended Resources (in AWS) |
