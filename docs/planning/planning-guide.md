@@ -5,6 +5,7 @@
 <!--ts-->
   * [Introduction](#Introduction)
   * [Anchore Overview and Concepts](#Anchore-Overview-and-Concepts)
+  * [Anchore Components](#Anchore-Components)
 
 <!--te-->
 
@@ -30,35 +31,34 @@ Anchore is container-native and is built and delivered as a Docker container. Yo
 
 Anchore is a collection of services that can be deployed co-located or fully distributed or anything in-between, as such it can be scaled out horizonally to increase analysis throughput. The only external system required is a PostgreSQL database (version 9.6 or higher) that all services will connect to. 
 
-### What are the components of Anchore Enterprise? 
+## Anchore Components? 
 
 Below describes the Anchore Enterprise services.
 
-#### Enterprise Services
+### Enterprise Services
 
-##### Client Tier
+#### Client Tier
 
 - Enterprise UI
 - Anchore CLI
 
-##### API Tier
+#### API Tier
 
 - External API
 - Enterprise RBAC Manager API
 - Enterprise RBAC Authorizer (internal)
 
-##### State Tier
+#### State Tier
 
 - Catalog
 - SimpleQueue
 - Policy Engine
 
-##### Worker Tier
+#### Worker Tier
 
 - Analyzer
 
-#### Enterprise Feeds Service
-===============================
+### Enterprise Feeds Service
 
 Anchore Enterprise Feeds service is an on-premise service that supplies os and non-os vulnerability data and package data for consumption by Anchore Engine. 
 
