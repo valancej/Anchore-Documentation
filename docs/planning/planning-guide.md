@@ -53,6 +53,7 @@ Below lists the Anchore Enterprise services.
 - Catalog
 - SimpleQueue
 - Policy Engine
+- Enterprise Feeds Service
 
 #### Worker Tier
 
