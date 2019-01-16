@@ -135,11 +135,16 @@ Before allocating designated resources for Anchore, users should ask themselves 
 2. What are the total number of analyzed images they would like to keep within Anchore? Is an audit trail of older images important? Is there an interval of time where analyzed image data can be thrown out? 
 3. What is the largest image that Anchore will be conducting analysis on?
 
-### Core components recommendations
+### Component performance attributes
 
 DB | Primary Resource Consumption | Scaling Metric | Recommended Resources (in AWS) |
 | :---- | :---- | :----------- | :----------------------------- |
-
+| External API | CPU (+ Mem for large responses) | Concurrent User API load | m4.large |
+| Catalog | CPU & Network IO | User API load and Image Analysis load | m4.xlarge |
+| Policy Engine | CPU + Memory | Image loads | c5.xlarge-4xlarge |
+| Simple Queue | CPU | Number of workers | t2.medium |
+| Analysis Worker | CPU + Scratch Disk IO | Image analysis queue | t2.medium/large |
+| Feed Service | IO (+ Mem) | N/A | m5.large |
 ### Database recommendations
 
  DB | Purpose | Scaling Metric | Storage | Recommended Resources (in AWS) |
