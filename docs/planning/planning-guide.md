@@ -58,6 +58,7 @@ Below describes the Anchore Enterprise services.
 - Analyzer
 
 #### Enterprise Feeds Service
+===============================
 
 Anchore Enterprise Feeds service is an on-premise service that supplies os and non-os vulnerability data and package data for consumption by Anchore Engine. 
 
