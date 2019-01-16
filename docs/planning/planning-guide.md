@@ -111,8 +111,9 @@ Anchore Enterprise is typically deployed as a running service and is commonly us
 - Iteractive Mode - Use the APIs to explicitly request an image analysis, get a policy evaluation and content reports, bu the engine only performs operations when specifically requested by a user or tooling. 
 - Watch Mode - Use the APIs to configure Anchore to poll specific registries and repositories/tags to watch for new images added and automatically pull and evaluate them, emitting notifications when a given tag's vulnerability or policy evaluation state changes.
 
-**Note:** For CI/CD integrations, it is common to scan Docker images after they are built and prior to deployment to a production registry. In this case, a staging registry is used to push the built images, Anchore then fetches the images from the staging registry, conducts analysis, and depending on the result of the policy evaluation, users can choose to promote these scanned images to a production registry. 
+### CI/CD integration
 
-**Note:** For CI/CD integrations, the build pipeline must be able to access the Anchore engine-api endpoint. 
+- It is common to scan Docker images after they are built and prior to deployment to a production registry. In this case, a staging registry is used to push the built images, Anchore then fetches the images from the staging registry, conducts analysis, and depending on the result of the policy evaluation, users can choose to promote these scanned images to a production registry. 
+- The build pipeline must be able to access the Anchore engine-api endpoint. 
 
 ## Capacity planning
