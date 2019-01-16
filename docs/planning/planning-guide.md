@@ -5,6 +5,8 @@
 <!--ts-->
   * [Introduction](#Introduction)
   * [Anchore Overview and Concepts](#Anchore-Overview-and-Concepts)
+    * [Enterprise Services](#Enterprise-Services)
+    * [Enterprise Feeds Service](#Enterprise-Feeds-Service)
   * [Anchore Components](#Anchore-Components)
 
 <!--te-->
