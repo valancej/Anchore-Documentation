@@ -112,6 +112,6 @@ Anchore Enterprise is typically deployed as a running service and is commonly us
 
 **Note:** For CI/CD integrations, it is common to scan Docker images after they are built and prior to deployment to a production registry. In this case, a staging registry is used to push the built images, Anchore then fetches the images from the staging registry, conducts analysis, and depending on the result of the policy evaluation, users can choose to promote these scanned images to a production registry. 
 
-**Note:** For CI/CD users, the build pipeline must be able to access the engine-api. 
+**Note:** For CI/CD integrations, the build pipeline must be able to access the engine-api. 
 
 ## Capacity planning
