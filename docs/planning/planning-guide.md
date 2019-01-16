@@ -35,7 +35,7 @@ Anchore is a Docker container image static analysis and policy-based compliance 
 
 Anchore is container-native and is built and delivered as a Docker container. You can view Anchore's dockerhub here: https://hub.docker.com/u/anchore.
 
-### What is inside? 
+### What Anchore contains? 
 
 Anchore is a collection of services that can be deployed co-located or fully distributed or anything in-between, as such it can be scaled out horizonally to increase analysis throughput. The only external system required is a PostgreSQL database (version 9.6 or higher) that all services will connect to. 
 
@@ -51,7 +51,7 @@ Anchore is a collection of services that can be deployed co-located or fully dis
 
 ## Anchore Components? 
 
-Below lists the Anchore Enterprise services.
+Below lists the components of Anchore Enterprise.
 
 ### Enterprise Services
 
