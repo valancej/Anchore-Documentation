@@ -96,5 +96,7 @@ Anchore Enterprise Feeds require access to upstream data feeds from the followin
 | launchpad.net/ubuntu-cve-tracker | 443 | Ubuntu Data |
 | data.anchore-enterprise.com | 443 | Snyk data |
 
-### What is required?
+### What is required for image analysis?
+
+Given that Anchore scans built Docker images a container registry (docker v2) is a hard requirement in order for Anchore to being analysis. The components of Anchore that need to communicate with the configured container registres are the Catalog and API service.
 
