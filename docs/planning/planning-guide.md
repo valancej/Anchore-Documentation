@@ -123,4 +123,8 @@ Anchore image analysis is performed as a distinct, asynchronous, and scheduled t
 
 ![alt text](https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/36021354861/original/YSqCPgSG77OXMHOjx7P2Do9Bld4Zar5gVw.jpg?1542049669)
 
+The analysis process is composed of several steps and utilizes several system components. The, basic flow of that task is as follows:
+
+![alt text](https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/36020808611/original/9W4uwUyT5suYarn83yOGsWPynNnxtPJKdw.jpg?1541503856)
+
 ## Capacity planning
