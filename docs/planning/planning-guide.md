@@ -32,26 +32,54 @@ Anchore is a collection of services that can be deployed co-located or fully dis
 
 ### What are the components of Anchore Enterprise? 
 
-#### Client Tier
+#### Enterprise Services
+
+##### Client Tier
 
 - Enterprise UI
 - Anchore CLI
 
-#### API Tier
+##### API Tier
 
 - External API
 - Enterprise RBAC Manager API
 - Enterprise RBAC Authorizer (internal)
 
-#### State Tier
+##### State Tier
 
 - Catalog
 - SimpleQueue
-- Policy-Engine
+- Policy Engine
 
-#### Worker Tier
+##### Worker Tier
 
 - Analyzer
+
+#### Enterprise Feeds Service
+
+Anchore Enterprise Feeds service is an on-premise service that supplies os and non-os vulnerability data and package data for consumption by Anchore Engine. 
+
+Anchore Enterprise Feeds have three components: 
+
+1. Drivers: Responsible to downloading raw data from external sources and normalizing it. 
+2. Database: Normalized vulnerability and package data is persisted in the database. In addition, the execution state and updates to the data set are tracked in the database.
+3. API: Anchore Enterprise Feeds exposes a RESTful API for interabtion with the service. The API layer serves the normalized data from the database based on the client requests. The Policy Engine service uses this API to sync the feed data down to the Anchore Engine database.
+
+Anchore Enterprise Feeds require access to upstream data feeds from the following supported supported distributions and package registries over port 443:
+
+| Host | Port | Description |
+| :---- | :---- | :----------- |
+| linux.oracle.com | 443 | Oracle Linux Security Feed |
+| github.com | 443 | Alpine Linux Security Database |
+| redhat.com | 443 | Red Hat Enterprise Linux Security Database |
+| security-tracker.debain.org | 443 | Debian Security Feed |
+| salsa.debian.org | 443 | Debian Security Feed |
+| replicate.npmjs.com | 443 | NPM Registry Package Data |
+| s3-us-west-2.amazonaws.com | 443 | Ruby Gems Data Feed |
+| static.nvd.nist.gov | 443 | NVD Database |
+| launchpad.net/ubuntu-cve-tracker | 443 | Ubuntu Data |
+| data.anchore-enterprise.com | 443 | Snyk data |
+
 
 ### How Anchore works?
 
