@@ -24,7 +24,7 @@ The intent of this document is to provide an overview and planning guide in prep
 - Anchore Components
 - Where Anchore will be run?
 - What Anchore needs to communicate with?
-- Common Anchore points of integration.
+- Common points of integration.
 - Anchore capacity planning.
 
 ## Anchore Overview
